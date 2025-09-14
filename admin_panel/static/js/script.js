@@ -1,24 +1,35 @@
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
+// 🔹 Проставляємо активний пункт на основі URL
+const currentPath = window.location.pathname;
+allSideMenu.forEach(item => {
+    if (item.getAttribute("href") === currentPath) {
+        item.parentElement.classList.add("active");
+    }
+});
+
+// 🔹 Додаємо обробник на клік (для UX без перезавантаження)
 allSideMenu.forEach(item => {
     const li = item.parentElement;
 
     item.addEventListener('click', function () {
         allSideMenu.forEach(i => {
             i.parentElement.classList.remove('active');
-        })
+        });
         li.classList.add('active');
-    })
+    });
 });
+
+console.log("Sidebar script loaded");
 
 // TOGGLE SIDEBAR
 const menuBar = document.querySelector('#content nav .bx.bx-menu');
 const sidebar = document.getElementById('sidebar');
 
-// Sidebar toggle işlemi
 menuBar.addEventListener('click', function () {
     sidebar.classList.toggle('hide');
 });
+
 
 // Sayfa yüklendiğinde ve boyut değişimlerinde sidebar durumunu ayarlama
 function adjustSidebar() {
@@ -84,29 +95,29 @@ window.addEventListener('click', function (e) {
 });
 
 // Menülerin açılıp kapanması için fonksiyon
-    function toggleMenu(menuId) {
-      var menu = document.getElementById(menuId);
-      var allMenus = document.querySelectorAll('.menu');
+function toggleMenu(menuId) {
+    var menu = document.getElementById(menuId);
+    var allMenus = document.querySelectorAll('.menu');
 
-      // Diğer tüm menüleri kapat
-      allMenus.forEach(function(m) {
+    // Diğer tüm menüleri kapat
+    allMenus.forEach(function (m) {
         if (m !== menu) {
-          m.style.display = 'none';
+            m.style.display = 'none';
         }
-      });
-
-      // Tıklanan menü varsa aç, yoksa kapat
-      if (menu.style.display === 'none' || menu.style.display === '') {
-        menu.style.display = 'block';
-      } else {
-        menu.style.display = 'none';
-      }
-    }
-
-    // Başlangıçta tüm menüleri kapalı tut
-    document.addEventListener("DOMContentLoaded", function() {
-      var allMenus = document.querySelectorAll('.menu');
-      allMenus.forEach(function(menu) {
-        menu.style.display = 'none';
-      });
     });
+
+    // Tıklanan menü varsa aç, yoksa kapat
+    if (menu.style.display === 'none' || menu.style.display === '') {
+        menu.style.display = 'block';
+    } else {
+        menu.style.display = 'none';
+    }
+}
+
+// Başlangıçta tüm menüleri kapalı tut
+document.addEventListener("DOMContentLoaded", function () {
+    var allMenus = document.querySelectorAll('.menu');
+    allMenus.forEach(function (menu) {
+        menu.style.display = 'none';
+    });
+});
