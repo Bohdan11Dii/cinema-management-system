@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
   <div class="table-container">
-  <h1>Seo</h1>
+    <h1>Seo</h1>
     <div class="add-btn-container">
-      <a href="{% url 'admin_panel:seo_block_create' %}" class="btn-add" >Додати новий блок</a>
+      <a href="{% url 'admin_panel:seo_block_create' %}" class="btn-add">Додати новий блок</a>
     </div>
 
     <table class="table">
@@ -23,7 +28,7 @@
           <td>{{ seo.title }}</td>
           <td>{{ seo.keywords }}</td>
           <td>
-            <a href="{% url 'admin_panel:seo_block_update' seo.id %}" class="btn btn-outline-warning" >Редагувати</a>
+            <a href="{% url 'admin_panel:seo_block_update' seo.id %}" class="btn btn-outline-warning">Редагувати</a>
             <a href="{% url 'admin_panel:seo_block_delete' seo.id %}" class="btn btn-outline-danger">Видалити</a>
           </td>
         </tr>

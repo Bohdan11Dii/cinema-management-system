@@ -1,4 +1,3 @@
-# admin_panel/forms/seo.py
 
 from django import forms
 from admin_panel.models.seo import SeoBlock
