@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load widget_tweaks %}
+
+{% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+  <div class="container mt-5">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <h1 class="mb-0">{{ object|yesno:"Update,Create" }} Contact Page</h1>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data" id="contact-form">
+      {% csrf_token %}
+      <div class="form-check form-switch mb-0" style="float: right">
+        {{ form.is_published|add_class:"form-check-input custom-toggle" }}
+      </div>
+      <div class="form-group">
+        <label for="id_title">Title</label>
+        {{ form.title }}
+      </div>
+
+      <div class="form-group">
+        <label for="id_published_date">Date published</label>
+        {{ form.published_date }}
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center;">
+        <div class="form-group">
+          <label for="id_seo">Choose Seo</label>
+          {{ form.seo|add_class:"form-select" }}
+        </div>
+        <div>
+          <a href="{% url 'admin_panel:seo_block_create' %}" target="_blank">
+            <i class='bx bx-plus bx-sm'></i>
+          </a>
+        </div>
+      </div>
+      <!-- Contact Formset -->
+      {% block formset %}
+        {% include "contact/formset_contact.html" %}
+      {% endblock %}
+
+
+      <button type="submit" class="btn btn-primary mt-3">Зберегти</button>
+      <a href="{% url 'admin_panel:contact_page_list' %}" class="btn btn-secondary mt-3">Відмінити</a>
+    </form>
+  </div>
+
+  <style>
+      /* Кастомний toggle */
+      .custom-toggle {
+          width: 50px;
+          height: 25px;
+          cursor: pointer;
+          position: relative;
+          -webkit-appearance: none;
+          background-color: #ddd;
+          border-radius: 25px;
+          outline: none;
+          transition: background 0.3s;
+      }
+
+      .custom-toggle:checked {
+          background-color: #3C91E6; /* синій активний */
+      }
+
+      .custom-toggle::before {
+          content: '';
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 21px;
+          height: 21px;
+          border-radius: 50%;
+          background: white;
+          transition: 0.3s;
+      }
+
+      .custom-toggle:checked::before {
+          transform: translateX(25px);
+      }
+
+      .form-select {
+          border-radius: 0.5rem;
+          padding: 0.5rem 1rem;
+          border: 1px solid #ced4da;
+          transition: all 0.3s;
+      }
+
+      .form-select:focus {
+          border-color: #3C91E6;
+          box-shadow: 0 0 0 0.2rem rgba(60, 145, 230, 0.25);
+          outline: none;
+      }
+
+      .form-select option {
+          padding: 0.5rem;
+      }
+  </style>
+
+
+{% endblock %}
