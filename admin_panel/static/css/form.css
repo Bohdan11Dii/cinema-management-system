@@ -1,0 +1,62 @@
+.seo-form {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.error {
+    color: #c0392b;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.btn-save {
+    padding: 8px 16px;
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background: #2ecc71;
+}
+
+
+
+.btn-cancel {
+    padding: 8px 16px;
+    background: #7f8c8d;
+    color: #fff;
+    border-radius: 8px;
+
+    margin-left: 10px;
+
+}
+
+.btn-cancel:hover {
+    background: #95a5a6;
+}
