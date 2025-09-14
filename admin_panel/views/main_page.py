@@ -21,7 +21,7 @@ class MainPageCreateView(generic.CreateView):
     def dispatch(self, request, *args, **kwargs):
         # Якщо вже є хоча б один MainPage – редіректимо на список
         if MainPage.objects.exists():
-            messages.warning(request, "Головна сторінка вже створена. Створення нової заборонено.")
+            messages.warning(request, "The main page has already been created. Creating a new one is prohibited.")
             return redirect('admin_panel:main_page_list')
         return super().dispatch(request, *args, **kwargs)
 
