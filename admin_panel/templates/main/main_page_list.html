@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+  <div class="table-container">
+    <h1>Main page</h1>
+    <div class="add-btn-container">
+      <a href="{% url 'admin_panel:main_page_create' %}" class="btn-add">Add page</a>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Date Published</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for main in main_page_list %}
+        <tr>
+          <th scope="row">{{ main.title }}</th>
+          <td>{{ main.published_date }}</td>
+          <td>{{ main.is_active }}</td>
+          <td>
+            <a href="{% url 'admin_panel:main_page_update' main.id %}" class="btn btn-outline-warning">Редагувати</a>
+            <a href="{% url 'admin_panel:main_page_delete' main.id %}" class="btn btn-outline-danger">Видалити</a>
+          </td>
+        </tr>
+      {% empty %}
+
+        <tr>
+          <td colspan="5">No pages available</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
