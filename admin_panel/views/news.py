@@ -28,11 +28,6 @@ class NewsUpdateView(FormsetMixin, generic.UpdateView):
     formset_class = GalleryImageFormSet
 
 
-class NewsDetailView(generic.DetailView):
-    model = News
-    template_name = "news/news_detail.html"
-
-
 class NewsDeleteView(generic.DeleteView):
     model = News
     template_name = "news/news_confirm_delete.html"

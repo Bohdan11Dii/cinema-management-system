@@ -2,8 +2,8 @@ from django.urls import path
 
 from admin_panel.views import hello_world, SeoBlockListView, SeoBlockCreateView, SeoBlockUpdateView, SeoBlockDeleteView, \
     MainPageListView, MainPageCreateView, MainPageUpdateView, MainPageDeleteView, ContactPageListView, \
-    ContactPageCreateView, ContactPageUpdateView, ContactPageDeleteView, NewsListView, NewsCreateView, NewsDetailView, \
-    NewsDeleteView, NewsUpdateView
+    ContactPageCreateView, ContactPageUpdateView, ContactPageDeleteView, NewsListView, NewsCreateView, NewsDeleteView, \
+    NewsUpdateView
 
 urlpatterns = [
     path("", hello_world, name="hello_world"),
@@ -28,7 +28,6 @@ urlpatterns = [
 
     path("news/delete/<int:pk>/", NewsDeleteView.as_view(), name="news-delete"),
     path("news/update/<int:pk>/", NewsUpdateView.as_view(), name="news-update"),
-    path("contact_page/detail/<int:pk>/", NewsDetailView.as_view(), name="news-detail"),
 
 ]
 
