@@ -12,7 +12,7 @@ class GalleryImage(models.Model):
     collection = models.ForeignKey(ImageTitle, on_delete=models.CASCADE, related_name="images")
     image = models.ImageField(upload_to="images/", blank=True, null=True)
     url = models.URLField(blank=True, null=True)
-    text = models.CharField(max_length=200)
+    text = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.text
