@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+  <p>{{ news.title }}</p>
+  <p>{{ news.description }}</p>
+  <p>{{ news.is_published }}</p>
+  <p>{{ news.published_date }}</p>
+  <p>{{ news.link_url }}</p>
+  <p>{{ news.type_page }}</p>
+  <p>{{ news.seo_news.title }}</p>
+
+  <hr>
+  
+  <p><img src="{{ news.image.url }}" alt=""></p>
+
+  <h1>HELO NOW WE USE COLLECTIONS</h1>
+  
+  {% for item in news.collection.images.all %}
+    <p><img src="{{ item.image.url }}" alt=""></p>
+  {% endfor %}
+
+
+{% endblock %}
