@@ -2,7 +2,8 @@ from django.urls import path
 
 from admin_panel.views import hello_world, SeoBlockListView, SeoBlockCreateView, SeoBlockUpdateView, SeoBlockDeleteView, \
     MainPageListView, MainPageCreateView, MainPageUpdateView, MainPageDeleteView, ContactPageListView, \
-    ContactPageCreateView, ContactPageUpdateView, ContactPageDeleteView
+    ContactPageCreateView, ContactPageUpdateView, ContactPageDeleteView, NewsListView, NewsCreateView, NewsDetailView, \
+    NewsDeleteView, NewsUpdateView
 
 urlpatterns = [
     path("", hello_world, name="hello_world"),
@@ -21,6 +22,13 @@ urlpatterns = [
     path("contact_page/create/", ContactPageCreateView.as_view(), name="contact_page_create"),
     path("contact_page/update/<int:pk>/", ContactPageUpdateView.as_view(), name="contact_page_update"),
     path("contact_page/delete/<int:pk>/", ContactPageDeleteView.as_view(), name="contact_page_delete"),
+
+    path("news/", NewsListView.as_view(), name="news-list"),
+    path("news/create/", NewsCreateView.as_view(), name="news_create"),
+
+    path("news/delete/<int:pk>/", NewsDeleteView.as_view(), name="news-delete"),
+    path("news/update/<int:pk>/", NewsUpdateView.as_view(), name="news-update"),
+    path("contact_page/detail/<int:pk>/", NewsDetailView.as_view(), name="news-detail"),
 
 ]
 
