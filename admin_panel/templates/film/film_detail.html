@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container py-5">
+    <a href="{% url 'admin_panel:film-list' %}" class="btn btn-outline-primary">
+      <i class='bx bxs-arrow-left'></i> Back to list
+    </a>
+    <!-- Заголовок -->
+    <div class="text-center mb-5">
+      <h1 class="fw-bold">{{ film.title }}</h1>
+
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Постер -->
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <img src="{{ film.film_image.url }}" class="card-img-top" alt="Постер фільму">
+        </div>
+      </div>
+
+      <!-- Інформація про фільм -->
+      <div class="col-md-8">
+        <div class="card shadow-sm p-4 h-100">
+          <h3 class="mb-3">About film</h3>
+
+          <ul class="list-unstyled mb-4">
+            <li><strong>Show:</strong> {{ film.get_type_show_display }}</li>
+            <li><strong>Format:</strong> {{ film.get_format_type_display }}</li>
+            <li><strong>Created:</strong> {{ film.created_at }}</li>
+            <li><strong>Updated:</strong> {{ film.updated_at }}</li>
+          </ul>
+
+          <ul class="list-unstyled mb-4">
+            <h3>SEO_BLOCK</h3>
+            <li><strong>Title:</strong> {{ film.seo_film.title }}</li>
+            <li><strong>Description:</strong> {{ film.seo_film.description }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Опис -->
+    <div class="card shadow-sm p-4 mt-5">
+      <h3 class="mb-3">Description</h3>
+      <p>{{ film.description }}</p>
+    </div>
+
+    <!-- Трейлер -->
+    <div class="card shadow-sm p-4 mt-5">
+      <h3 class="mb-3 text-center">Trailer</h3>
+      <div class="d-flex justify-content-center">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/{{ film.link|slice:'32:' }}"
+                  title="YouTube відео"
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Галерея -->
+    <div class="card shadow-sm p-4 mt-5">
+      <h3 class="mb-3 text-center">Gallery</h3>
+      <div class="row g-3">
+        {% for image in film.collection.images.all %}
+          <div class="col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm">
+              <img src="{{ image.image.url }}" class="card-img-top" alt="Фото з галереї">
+            </div>
+          </div>
+        {% empty %}
+          <p class="text-center text-muted">Немає фотографій у галереї</p>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

@@ -3,7 +3,7 @@ from django.urls import path
 from admin_panel.views import hello_world, SeoBlockListView, SeoBlockCreateView, SeoBlockUpdateView, SeoBlockDeleteView, \
     MainPageListView, MainPageCreateView, MainPageUpdateView, MainPageDeleteView, ContactPageListView, \
     ContactPageCreateView, ContactPageUpdateView, ContactPageDeleteView, NewsListView, NewsCreateView, NewsDeleteView, \
-    NewsUpdateView
+    NewsUpdateView, FilmListView, FilmCreateView, FilmDetailView, FilmUpdateView, FilmDeleteView
 
 urlpatterns = [
     path("", hello_world, name="hello_world"),
@@ -28,6 +28,12 @@ urlpatterns = [
 
     path("news/delete/<int:pk>/", NewsDeleteView.as_view(), name="news-delete"),
     path("news/update/<int:pk>/", NewsUpdateView.as_view(), name="news-update"),
+
+    path("films/", FilmListView.as_view(), name="film-list"),
+    path("films/create/", FilmCreateView.as_view(), name="film-create"),
+    path("films/detail/<int:pk>/", FilmDetailView.as_view(), name="film-detail"),
+    path("films/update/<int:pk>/", FilmUpdateView.as_view(), name="film-update"),
+    path("films/delete/<int:pk>/", FilmDeleteView.as_view(), name="film-delete"),
 
 ]
 

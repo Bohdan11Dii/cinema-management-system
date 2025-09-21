@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+  <div class="table-container">
+    <h1>Films</h1>
+    <div class="add-btn-container">
+      <a href="{% url 'admin_panel:film-create' %}" class="btn-add">Add film</a>
+    </div>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">TITLE</th>
+        <th scope="col">SHOW</th>
+        <th scope="col">TYPE</th>
+        <th scope="col">CREATED</th>
+        <th scope="col">ACTIONS</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for film in film_list %}
+        <tr scope="row">
+          <td><a href="{% url 'admin_panel:film-detail' film.id %}">{{ film.title }}</a></td>
+          <td>{{ film.get_type_show_display }}</td>
+          <td>{{ film.format_type }}</td>
+          <td>{{ film.created_at }}</td>
+          <td>
+            <a href="{% url 'admin_panel:film-update' film.id %}" class="btn btn-outline-warning">Редагувати</a>
+            <a href="{% url 'admin_panel:film-delete' film.id %}" class="btn btn-outline-danger">Видалити</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No Films</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
