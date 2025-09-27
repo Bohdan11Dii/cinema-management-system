@@ -15,24 +15,24 @@ class MainPageCreateView(generic.CreateView):
     model = MainPage
     form_class = MainPageForm
     template_name = "main/main_page_form.html"
-    success_url = reverse_lazy("admin_panel:main_page_list")
+    success_url = reverse_lazy("admin_panel:main-page-list")
 
 
     def dispatch(self, request, *args, **kwargs):
         # Якщо вже є хоча б один MainPage – редіректимо на список
         if MainPage.objects.exists():
             messages.warning(request, "The main page has already been created. Creating a new one is prohibited.")
-            return redirect('admin_panel:main_page_list')
+            return redirect('admin_panel:main-page-list')
         return super().dispatch(request, *args, **kwargs)
 
 class MainPageUpdateView(SuccessMessageMixin, generic.UpdateView):
     model = MainPage
     form_class = MainPageForm
     template_name = "main/main_page_form.html"
-    success_url = reverse_lazy("admin_panel:main_page_list")
+    success_url = reverse_lazy("admin_panel:main-page-list")
     success_message = "The main page has been updated successfully"
 
 class MainPageDeleteView(generic.DeleteView):
     model = MainPage
     template_name = "main/main_page_confirm_delete.html"
-    success_url = reverse_lazy("admin_panel:main_page_list")
+    success_url = reverse_lazy("admin_panel:main-page-list")

@@ -16,7 +16,7 @@ class SeoBlockCreateView(generic.CreateView):
     model = SeoBlock
     template_name = "seo/seo_form.html"
     form_class = SeoForm
-    success_url = reverse_lazy("admin_panel:seo_block_list")
+    success_url = reverse_lazy("admin_panel:seo-block-list")
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -28,11 +28,11 @@ class SeoBlockUpdateView(SuccessMessageMixin, generic.UpdateView):
     model = SeoBlock
     form_class = SeoForm
     template_name = "seo/seo_form.html"
-    success_url = reverse_lazy("admin_panel:seo_block_list")
+    success_url = reverse_lazy("admin_panel:seo-block-list")
     success_message = "The main page has been updated successfully"
 
 
 class SeoBlockDeleteView(generic.DeleteView):
     model = SeoBlock
     template_name = "seo/seo_confirm_delete.html"
-    success_url = reverse_lazy("admin_panel:seo_block_list")
+    success_url = reverse_lazy("admin_panel:seo-block-list")

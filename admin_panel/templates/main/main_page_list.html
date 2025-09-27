@@ -9,7 +9,7 @@
   <div class="table-container">
     <h1>Main page</h1>
     <div class="add-btn-container">
-      <a href="{% url 'admin_panel:main_page_create' %}" class="btn-add">Add page</a>
+      <a href="{% url 'admin_panel:main-page-create' %}" class="btn-add">Add page</a>
     </div>
 
     <table class="table table-striped">
@@ -28,8 +28,8 @@
           <td>{{ main.published_date }}</td>
           <td>{{ main.is_active }}</td>
           <td>
-            <a href="{% url 'admin_panel:main_page_update' main.id %}" class="btn btn-outline-warning">Редагувати</a>
-            <a href="{% url 'admin_panel:main_page_delete' main.id %}" class="btn btn-outline-danger">Видалити</a>
+            <a href="{% url 'admin_panel:main-page-update' main.id %}" class="btn btn-outline-warning">Редагувати</a>
+            <a href="{% url 'admin_panel:main-page-delete' main.id %}" class="btn btn-outline-danger">Видалити</a>
           </td>
         </tr>
       {% empty %}

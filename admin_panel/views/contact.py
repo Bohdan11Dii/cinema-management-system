@@ -16,12 +16,12 @@ class ContactPageCreateView(generic.CreateView):
     model = ContactPage
     form_class = ContactPageForm
     template_name = "contact/contact_page_form.html"
-    success_url = reverse_lazy("admin_panel:contact_page_list")
+    success_url = reverse_lazy("admin_panel:contact-page-list")
 
     def dispatch(self, request, *args, **kwargs):
         if ContactPage.objects.exists():
             messages.warning(request, "The contact page has already been created. Creating a new one is prohibited.")
-            return redirect('admin_panel:contact_page_list')
+            return redirect('admin_panel:contact-page-list')
         return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -47,7 +47,7 @@ class ContactPageUpdateView(generic.UpdateView):
     model = ContactPage
     form_class = ContactPageForm
     template_name = "contact/contact_page_form.html"
-    success_url = reverse_lazy("admin_panel:contact_page_list")
+    success_url = reverse_lazy("admin_panel:contact-page-list")
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
@@ -78,4 +78,4 @@ class ContactPageDeleteView(generic.DeleteView):
     model = ContactPage
     context_object_name = "contact_page"
     template_name = "contact/contact_page_confirm_delete.html"
-    success_url = reverse_lazy("admin_panel:contact_page_list")
+    success_url = reverse_lazy("admin_panel:contact-page-list")

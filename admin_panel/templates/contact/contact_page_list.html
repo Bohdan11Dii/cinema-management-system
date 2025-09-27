@@ -9,7 +9,7 @@
   <div class="table-container">
     <h1>CONTACT PAGE</h1>
     <div class="add-btn-container">
-      <a href="{% url 'admin_panel:contact_page_create' %}" class="btn-add">Add contact</a>
+      <a href="{% url 'admin_panel:contact-page-create' %}" class="btn-add">Add contact</a>
     </div>
 
     <table class="table">
@@ -28,8 +28,8 @@
           <td>{{ contact.published_date }}</td>
           <td>{{ contact.is_published }}</td>
           <td>
-            <a href="{% url 'admin_panel:contact_page_update' contact.id %}" class="btn btn-outline-warning">Редагувати</a>
-            <a href="{% url 'admin_panel:contact_page_delete' contact.id %}" class="btn btn-outline-danger">Видалити</a>
+            <a href="{% url 'admin_panel:contact-page-update' contact.id %}" class="btn btn-outline-warning">Редагувати</a>
+            <a href="{% url 'admin_panel:contact-page-delete' contact.id %}" class="btn btn-outline-danger">Видалити</a>
           </td>
         </tr>
       {% empty %}
