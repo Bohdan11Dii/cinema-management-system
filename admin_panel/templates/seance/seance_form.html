@@ -4,18 +4,15 @@
 
 {% block content %}
   <br>
-  <h2 class="mb-4" style="text-align: center">{{ object|yesno:"Update,Create" }} Film</h2>
+  <h2 class="mb-4" style="text-align: center">{{ object|yesno:"Update,Create" }} Seance</h2>
   <hr>
   <div class="col-md-12" style="padding-top: 60px;margin-bottom: 3rem;">
     <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
       {{ form|crispy }}
 
-      {% block formset %}
-        {% include "includes/formset_gallery.html" %}
-      {% endblock %}
 
       <input class="btn btn-primary mt-3" type="submit" value="Save"/>
-      <a href="{% url 'admin_panel:film-list' %}" class="btn btn-secondary mt-3">Cancel</a>
+      <a href="{% url 'admin_panel:seance-list' %}" class="btn btn-secondary mt-3">Cancel</a>
     </form>
   </div>
 {% endblock %}

@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-from admin_panel.models.cinema_hall import Hall
+from admin_panel.models.cinema_hall import Hall, Cinema
 from admin_panel.models.film import Film
 
 
@@ -18,6 +18,11 @@ class Seance(models.Model):
     )
     hall = models.ForeignKey(
         Hall,
+        on_delete=models.CASCADE,
+        related_name="seances",
+    )
+    cinema = models.ForeignKey(
+        Cinema,
         on_delete=models.CASCADE,
         related_name="seances",
     )

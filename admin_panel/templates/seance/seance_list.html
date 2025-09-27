@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+  <div class="table-container">
+    <h1>Seance</h1>
+    <div class="add-btn-container">
+      <a href="{% url 'admin_panel:seance-create' %}" class="btn-add">New Seance</a>
+    </div>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">DATETIME</th>
+        <th scope="col">TYPE</th>
+        <th scope="col">CREATED</th>
+        <th scope="col">PRICE</th>
+        <th scope="col">ACTIONS</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for seance in seance_list %}
+        <tr scope="row">
+          <td>{{ seance.datetime }}</td>
+          <td>{{ seance.format_type }}</td>
+          <td>{{ seance.created_at }}</td>
+          <td>{{ seance.price }}</td>
+          <td>
+            <a href="{% url 'admin_panel:seance-update' seance.id %}" class="btn btn-outline-warning">Редагувати</a>
+            <a href="{% url 'admin_panel:seance-delete' seance.id %}" class="btn btn-outline-danger">Видалити</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No Seance</td>
+        </tr>
+      {% endfor %}
+
+
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

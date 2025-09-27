@@ -3,7 +3,9 @@ from django.urls import path
 from admin_panel.views import hello_world, SeoBlockListView, SeoBlockCreateView, SeoBlockUpdateView, SeoBlockDeleteView, \
     MainPageListView, MainPageCreateView, MainPageUpdateView, MainPageDeleteView, ContactPageListView, \
     ContactPageCreateView, ContactPageUpdateView, ContactPageDeleteView, NewsListView, NewsCreateView, NewsDeleteView, \
-    NewsUpdateView, FilmListView, FilmCreateView, FilmDetailView, FilmUpdateView, FilmDeleteView
+    NewsUpdateView, FilmListView, FilmCreateView, FilmDetailView, FilmUpdateView, FilmDeleteView, CinemaListView, \
+    CinemaCreateView, CinemaUpdateView, CinemaDeleteView, HallListView, HallCreateView, HallUpdateView, HallDeleteView, \
+    SeanceListView, SeanceCreateView, SeanceUpdateView, SeanceDeleteView
 
 urlpatterns = [
     path("", hello_world, name="hello-world"),
@@ -35,6 +37,20 @@ urlpatterns = [
     path("films/update/<int:pk>/", FilmUpdateView.as_view(), name="film-update"),
     path("films/delete/<int:pk>/", FilmDeleteView.as_view(), name="film-delete"),
 
+    path("cinemas/", CinemaListView.as_view(), name="cinema-list"),
+    path("cinemas/create/", CinemaCreateView.as_view(), name="cinema-create"),
+    path("cinemas/update/<int:pk>/", CinemaUpdateView.as_view(), name="cinema-update"),
+    path("cinemas/delete/<int:pk>/", CinemaDeleteView.as_view(), name="cinema-delete"),
+
+    path("halls/", HallListView.as_view(), name="hall-list"),
+    path("halls/create/", HallCreateView.as_view(), name="hall-create"),
+    path("halls/update/<int:pk>/", HallUpdateView.as_view(), name="hall-update"),
+    path("halls/delete/<int:pk>/", HallDeleteView.as_view(), name="hall-delete"),
+
+    path("seances/",SeanceListView.as_view(), name="seance-list"),
+    path("seances/create/", SeanceCreateView.as_view(), name="seance-create"),
+    path("seances/update/<int:pk>/", SeanceUpdateView.as_view(), name="seance-update"),
+    path("seances/delete/<int:pk>/", SeanceDeleteView.as_view(), name="seance-delete"),
 ]
 
 app_name = "admin_panel"

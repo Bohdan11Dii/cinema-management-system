@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+  <div class="table-container">
+    <h1>Cinemas</h1>
+    <div class="add-btn-container">
+      <a href="{% url 'admin_panel:cinema-create' %}" class="btn-add">Add Cinema</a>
+    </div>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">TITLE</th>
+        <th scope="col">CREATED</th>
+        <th scope="col">ACTIONS</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for cinema in cinema_list %}
+        <tr scope="row">
+          <td>{{ cinema.title }}</td>
+          <td>{{ cinema.created_at }}</td>
+          <td>
+            <a href="{% url 'admin_panel:cinema-update' cinema.id %}" class="btn btn-outline-warning">Редагувати</a>
+            <a href="{% url 'admin_panel:cinema-delete' cinema.id %}" class="btn btn-outline-danger">Видалити</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No Cinemas</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
