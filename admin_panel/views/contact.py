@@ -49,6 +49,13 @@ class ContactPageUpdateView(generic.UpdateView):
     template_name = "contact/contact_page_form.html"
     success_url = reverse_lazy("admin_panel:contact-page-list")
 
+    def get_queryset(self):
+        return (
+            ContactPage.objects
+            .select_related("seo")  # ForeignKey -> JOIN
+            .prefetch_related("contacts")  # Reverse FK -> окремий SELECT, але оптимізовано
+        )
+
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         if self.request.POST:

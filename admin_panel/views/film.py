@@ -11,24 +11,41 @@ class FilmListView(generic.ListView):
     model = Film
     template_name = "film/film_list.html"
 
-class FilmCreateView(FormsetMixin,generic.CreateView):
+
+class FilmCreateView(FormsetMixin, generic.CreateView):
     model = Film
     template_name = "film/film_form.html"
     success_url = reverse_lazy("admin_panel:film-list")
     form_class = FilmForm
     formset_class = GalleryImageFormSet
+
 
 class FilmDetailView(generic.DetailView):
     model = Film
     template_name = "film/film_detail.html"
 
+    def get_queryset(self):
+        return (
+            Film.objects
+            .select_related("collection", "seo_film")  # JOIN для FK
+            .prefetch_related("collection__images")  # всі картинки з колекції
+        )
 
-class FilmUpdateView(FormsetMixin,generic.UpdateView):
+
+class FilmUpdateView(FormsetMixin, generic.UpdateView):
     model = Film
     template_name = "film/film_form.html"
     success_url = reverse_lazy("admin_panel:film-list")
     form_class = FilmForm
     formset_class = GalleryImageFormSet
+
+    def get_queryset(self):
+        return (
+            Film.objects
+            .select_related("collection", "seo_film")  # JOIN для FK
+            .prefetch_related("collection__images")  # всі картинки з колекції
+        )
+
 
 class FilmDeleteView(generic.DeleteView):
     model = Film

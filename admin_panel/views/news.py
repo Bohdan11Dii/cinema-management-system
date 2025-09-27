@@ -27,6 +27,13 @@ class NewsUpdateView(FormsetMixin, generic.UpdateView):
     success_url = reverse_lazy("admin_panel:news-list")
     formset_class = GalleryImageFormSet
 
+    def get_queryset(self):
+        return (
+            News.objects
+            .select_related("collection", "seo_news")  # одразу JOIN двох ForeignKey
+            .prefetch_related("collection__images")  # щоб підтягнути всі картинки з колекції
+        )
+
 
 class NewsDeleteView(generic.DeleteView):
     model = News

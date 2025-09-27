@@ -5,8 +5,9 @@ from admin_panel.models import ContactPage, Contact
 
 
 class ContactForm(forms.ModelForm):
-    model = Contact
-    fields = ['title', 'address', 'coordinates', 'is_active', 'logo']
+    class Meta:
+        model = Contact
+        fields = ['title', 'address', 'coordinates', 'is_active', 'logo']
 
 
 class ContactPageForm(forms.ModelForm):

@@ -32,6 +32,9 @@ class MainPageUpdateView(SuccessMessageMixin, generic.UpdateView):
     success_url = reverse_lazy("admin_panel:main-page-list")
     success_message = "The main page has been updated successfully"
 
+    def get_queryset(self):
+        return MainPage.objects.select_related("seo")
+
 class MainPageDeleteView(generic.DeleteView):
     model = MainPage
     template_name = "main/main_page_confirm_delete.html"
