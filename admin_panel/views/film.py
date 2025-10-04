@@ -10,6 +10,7 @@ from admin_panel.models import Film
 class FilmListView(generic.ListView):
     model = Film
     template_name = "film/film_list.html"
+    paginate_by = 10
 
 
 class FilmCreateView(FormsetMixin, generic.CreateView):

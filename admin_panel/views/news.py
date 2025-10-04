@@ -10,6 +10,7 @@ from admin_panel.models import News
 class NewsListView(generic.ListView):
     model = News
     template_name = "news/news_list.html"
+    paginate_by = 5
 
 
 class NewsCreateView(FormsetMixin, generic.CreateView):

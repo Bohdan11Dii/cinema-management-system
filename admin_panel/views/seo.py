@@ -10,6 +10,7 @@ class SeoBlockListView(generic.ListView):
     model = SeoBlock
     template_name = "seo/seo_list.html"
     context_object_name = "seo_list"
+    paginate_by = 5
 
 
 class SeoBlockCreateView(generic.CreateView):

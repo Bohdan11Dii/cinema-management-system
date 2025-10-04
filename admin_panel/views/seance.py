@@ -8,7 +8,7 @@ from admin_panel.models import Seance
 class SeanceListView(generic.ListView):
     model = Seance
     template_name = "seance/seance_list.html"
-
+    paginate_by = 5
 
 class SeanceCreateView(generic.CreateView):
     model = Seance
