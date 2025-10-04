@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
   <div class="container py-5">
@@ -16,7 +17,11 @@
       <!-- Постер -->
       <div class="col-md-4">
         <div class="card shadow-sm">
-          <img src="{{ film.film_image.url }}" class="card-img-top" alt="Постер фільму">
+          {% if film.film_image %}
+            <img src="{{ film.film_image.url }}" class="card-img-top" alt="Постер фільму">
+          {% else %}
+            <img src="{% static 'img/default.jpg' %}" class="card-img-top" alt="Постер фільму">
+          {% endif %}
         </div>
       </div>
 
