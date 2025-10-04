@@ -5,7 +5,8 @@ from admin_panel.views import hello_world, SeoBlockListView, SeoBlockCreateView,
     ContactPageCreateView, ContactPageUpdateView, ContactPageDeleteView, NewsListView, NewsCreateView, NewsDeleteView, \
     NewsUpdateView, FilmListView, FilmCreateView, FilmDetailView, FilmUpdateView, FilmDeleteView, CinemaListView, \
     CinemaCreateView, CinemaUpdateView, CinemaDeleteView, HallListView, HallCreateView, HallUpdateView, HallDeleteView, \
-    SeanceListView, SeanceCreateView, SeanceUpdateView, SeanceDeleteView
+    SeanceListView, SeanceCreateView, SeanceUpdateView, SeanceDeleteView, BackgroundListView, BackgroundCreateView, \
+    BackgroundUpdateView, BackgroundDeleteView, BannerListView, BannerCreateView, BannerUpdateView, BannerDeleteView
 
 urlpatterns = [
     path("", hello_world, name="hello-world"),
@@ -47,10 +48,20 @@ urlpatterns = [
     path("halls/update/<int:pk>/", HallUpdateView.as_view(), name="hall-update"),
     path("halls/delete/<int:pk>/", HallDeleteView.as_view(), name="hall-delete"),
 
-    path("seances/",SeanceListView.as_view(), name="seance-list"),
+    path("seances/", SeanceListView.as_view(), name="seance-list"),
     path("seances/create/", SeanceCreateView.as_view(), name="seance-create"),
     path("seances/update/<int:pk>/", SeanceUpdateView.as_view(), name="seance-update"),
     path("seances/delete/<int:pk>/", SeanceDeleteView.as_view(), name="seance-delete"),
+
+    path("backgoundbanners/", BackgroundListView.as_view(), name="back-list"),
+    path("backgoundbanners/create/", BackgroundCreateView.as_view(), name="back-create"),
+    path("backgoundbanners/update/<int:pk>/", BackgroundUpdateView.as_view(), name="back-update"),
+    path("backgoundbanners/delete/<int:pk>/", BackgroundDeleteView.as_view(), name="back-delete"),
+    path("banners/", BannerListView.as_view(), name="banner-list"),
+    path("banners/create/", BannerCreateView.as_view(), name="banner-create"),
+    path("banners/update/<int:pk>/", BannerUpdateView.as_view(), name="banner-update"),
+    path("banners/delete/<int:pk>/", BannerDeleteView.as_view(), name="banner-delete"),
+
 ]
 
 app_name = "admin_panel"

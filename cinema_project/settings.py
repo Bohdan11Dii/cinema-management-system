@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "widget_tweaks",
     "user",
-    "main",
     "admin_panel",
 ]
 

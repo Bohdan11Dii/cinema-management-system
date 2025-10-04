@@ -20,6 +20,14 @@ class BackgroundBanner(models.Model):
         verbose_name="Фонове зображення"
     )
 
+    background_color = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+        verbose_name="Колір фону",
+        help_text="Вкажіть HEX-код або назву кольору (наприклад: #ffffff або red)"
+    )
+
     def __str__(self):
         return f"{self.get_type_display()} ({self.image.name if self.image else 'Без зображення'})"
 
