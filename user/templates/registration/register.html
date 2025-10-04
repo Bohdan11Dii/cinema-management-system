@@ -1,0 +1,80 @@
+{% extends 'user_base.html' %}
+
+{% block registration %}
+  <form method="post" class="form" id="register-form">
+    {% csrf_token %}
+    <h2>Create Account</h2>
+
+    <div class="input-group">
+      <i class="fa fa-user"></i>
+      {{ form.username }}
+      {% if form.username.errors %}
+        <div class="error">
+          {% for error in form.username.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="input-group">
+      <i class="fas fa-envelope"></i>
+      {{ form.email }}
+      {% if form.email.errors %}
+        <div class="error">
+          {% for error in form.email.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      {{ form.password1 }}
+      {% if form.password1.errors %}
+        <div class="error">
+          {% for error in form.password1.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      {{ form.password2 }}
+      {% if form.password2.errors %}
+        <div class="error">
+          {% for error in form.password2.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="options">
+      <div class="remember">
+        {{ form.remember_me }}
+        <label for="remember">Remember me</label>
+        {% if form.remember_me.errors %}
+          <div class="error">
+            {% for error in form.remember_me.errors %}
+              <p>{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn">Register</button>
+
+    <div class="separator"><span>Or sign up with</span></div>
+    <div class="social-login">
+      <div class="social-btn"><i class="fab fa-google"></i></div>
+      <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
+      <div class="social-btn"><i class="fab fa-twitter"></i></div>
+    </div>
+  </form>
+{% endblock %}

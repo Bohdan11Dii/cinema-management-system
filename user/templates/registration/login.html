@@ -1,0 +1,28 @@
+{% extends "user_base.html" %}
+
+{% block login %}
+  <form method="post" class="form active" id="login-form">
+    {% csrf_token %}
+    <h2>Log In</h2>
+
+    <div class="input-group">
+      <i class="fa-solid fa-user"></i>
+      {{ form.username }}  <!-- Для Django форми -->
+    </div>
+
+    <div class="input-group">
+      <i class="fa-solid fa-lock"></i>
+      {{ form.password }}
+    </div>
+
+
+    <button type="submit" class="btn">Login</button>
+
+    <div class="separator"><span>Or continue with</span></div>
+    <div class="social-login">
+      <div class="social-btn"><i class="fa-brands fa-google"></i></div>
+      <div class="social-btn"><i class="fa-brands fa-facebook-f"></i></div>
+      <div class="social-btn"><i class="fa-brands fa-twitter"></i></div>
+    </div>
+  </form>
+{% endblock %}

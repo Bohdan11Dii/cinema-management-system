@@ -23,7 +23,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("__debug__/", include("debug_toolbar.urls")),
-    path("admin_panel/", include("admin_panel.urls", namespace="admin_panel")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("", include("admin_panel.urls", namespace="admin_panel")),
+    path("user/", include("user.urls", namespace="user")),
 ]
 if settings.DEBUG:
     urlpatterns += static(
